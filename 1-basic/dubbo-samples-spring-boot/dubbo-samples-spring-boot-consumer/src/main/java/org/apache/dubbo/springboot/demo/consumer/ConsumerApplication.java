@@ -31,15 +31,21 @@ import org.springframework.stereotype.Service;
 @EnableDubbo
 public class ConsumerApplication {
 
-    @DubboReference
+//    @DubboReference
+//    private DemoService demoService;
+
+    @DubboReference(registry = "registry-query-service", group = "${dubbo.consumer.query-service}",check = false)
     private DemoService demoService;
+
 
     public static void main(String[] args) {
 
         ConfigurableApplicationContext context = SpringApplication.run(ConsumerApplication.class, args);
         ConsumerApplication application = context.getBean(ConsumerApplication.class);
-        String result = application.doSayHello("world");
-        System.out.println("result: " + result);
+        for (int i = 0; i < 10; i++) {
+            String result = application.doSayHello("world");
+            System.out.println("result: " + result);
+        }
     }
 
     public String doSayHello(String name) {

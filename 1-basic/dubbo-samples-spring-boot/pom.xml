@@ -32,16 +32,17 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <spring.version>4.3.16.RELEASE</spring.version>
-        <dubbo.version>3.0.7</dubbo.version>
+        <dubbo.version>3.0.14</dubbo.version>
         <junit.version>4.13.1</junit.version>
         <slf4j-log4j12.version>1.7.25</slf4j-log4j12.version>
-        <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
+        <spring-boot.version>2.7.3</spring-boot.version>
         <spring-boot-maven-plugin.version>2.1.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
 
     <modules>
         <module>dubbo-samples-spring-boot-interface</module>
         <module>dubbo-samples-spring-boot-provider</module>
+        <module>dubbo-samples-spring-boot-provider2</module>
         <module>dubbo-samples-spring-boot-consumer</module>
     </modules>
 

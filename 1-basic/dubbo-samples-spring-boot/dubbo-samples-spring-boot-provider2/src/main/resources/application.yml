@@ -10,7 +10,6 @@ dubbo:
       group: query-service-group
   provider:
     group: query-service-provider-group
-    tag: guhao
 
 
 

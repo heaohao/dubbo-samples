@@ -14,23 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.dubbo.springboot.demo.provider;
 
 
-import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
+import org.apache.dubbo.config.annotation.DubboService;
+import org.apache.dubbo.rpc.RpcContext;
+import org.apache.dubbo.springboot.demo.DemoService;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+@DubboService
+public class DemoServiceImpl implements DemoService {
 
-@SpringBootApplication
-@EnableDubbo
-public class ProviderApplication {
-    public static void main(String[] args) throws Exception {
-//        new EmbeddedZooKeeper(2181, false).start();
-
-        SpringApplication.run(ProviderApplication.class, args);
-        System.out.println("dubbo service started");
-//        new CountDownLatch(1).await();
+    @Override
+    public String sayHello(String name) {
+        System.out.println("Hello " + name + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
+        return "Hello 222222 " + name;
     }
+
+
 }
