@@ -25,11 +25,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableDubbo
-public class ProviderApplication {
+public class DomainApplication {
     public static void main(String[] args) throws Exception {
 //        new EmbeddedZooKeeper(2181, false).start();
 
-        SpringApplication.run(ProviderApplication.class, args);
+        SpringApplication.run(DomainApplication.class, args);
         System.out.println("dubbo service started");
 //        new CountDownLatch(1).await();
     }

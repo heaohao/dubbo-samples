@@ -43,6 +43,8 @@
         <module>dubbo-samples-spring-boot-interface</module>
         <module>dubbo-samples-spring-boot-provider</module>
         <module>dubbo-samples-spring-boot-provider2</module>
+        <module>dubbo-samples-spring-boot-provider3</module>
+        <module>dubbo-samples-spring-boot-provider4</module>
         <module>dubbo-samples-spring-boot-consumer</module>
     </modules>
 

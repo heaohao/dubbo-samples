@@ -1,24 +1,27 @@
-u-name: ceshi
+u-name: guhao
 dubbo:
   application:
-    name: query-service
+    name: consumer-aaa
   protocol:
     name: dubbo
     port: -1
   registries:
     registry-query-service:
-      address: zookeeper://zk.dev.xinshiyun.com:12181?timeout=120000
+      address: zookeeper://127.0.0.1:2181
       group: query-service-group
-  provider:
-    group: query-service-provider-group
-    tag: ${u-name:localTag}
-
+    registry-domain-service:
+      address: zookeeper://127.0.0.1:2181
+      group: domain-service-group
+  consumer:
+    query-service: query-service-provider-group
+    domain-service: domain-service-provider-group
+    check: false
+    router: local_tag
 
 
 #  registry:
 #    id: zk-registry
 #    address: zookeeper://127.0.0.1:2181
-
 #  config-center:
 #    address: zookeeper://127.0.0.1:2181
 #  metadata-report:

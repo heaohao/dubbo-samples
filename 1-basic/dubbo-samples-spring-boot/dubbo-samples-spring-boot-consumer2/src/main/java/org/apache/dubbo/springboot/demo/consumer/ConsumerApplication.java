@@ -17,7 +17,6 @@
 
 package org.apache.dubbo.springboot.demo.consumer;
 
-import com.xinshiyun.ddr.api.communicate.ICommunicateOperateService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.apache.dubbo.springboot.demo.DemoService;
@@ -25,12 +24,10 @@ import org.apache.dubbo.springboot.demo.DemoService;
 import org.apache.dubbo.springboot.demo.DemoService2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Service;
 
-@SpringBootApplication(scanBasePackages = {"com.xinshiyun.ddr"})
-//@SpringBootApplication
+@SpringBootApplication
 @Service
 @EnableDubbo
 public class ConsumerApplication {
@@ -38,41 +35,31 @@ public class ConsumerApplication {
 //    @DubboReference
 //    private DemoService demoService;
 
-//    @DubboReference(registry = "registry-query-service", group = "${dubbo.consumer.query-service}",check = false)
-//    private DemoService demoService;
-//
-//    @DubboReference(registry = "registry-domain-service", group = "${dubbo.consumer.domain-service}",check = false)
-//    private DemoService2 demoService2;
+    @DubboReference(registry = "registry-query-service", group = "${dubbo.consumer.query-service}",check = false)
+    private DemoService demoService;
 
-    @DubboReference(registry = "registry-ddr", group = "ddr-domain-ddr",check = false)
-    private ICommunicateOperateService communicateOperateService;
+    @DubboReference(registry = "registry-domain-service", group = "${dubbo.consumer.domain-service}",check = false)
+    private DemoService2 demoService2;
 
 
     public static void main(String[] args) {
 
         ConfigurableApplicationContext context = SpringApplication.run(ConsumerApplication.class, args);
         ConsumerApplication application = context.getBean(ConsumerApplication.class);
-        for (int i = 0; i < 3; i++) {
-            String s = application.test3("1");
-            System.out.println(s);
+        for (int i = 0; i < 10; i++) {
+            String result = application.doSayHello("world");
+            System.out.println("result: " + result);
         }
-//        for (int i = 0; i < 10; i++) {
-//            String result = application.doSayHello("world");
-//            System.out.println("result: " + result);
-//        }
-//        for (int i = 0; i < 10; i++) {
-//            String result = application.doSayHello2("world");
-//            System.out.println("result: " + result);
-//        }
-
+        for (int i = 0; i < 10; i++) {
+            String result = application.doSayHello2("world");
+            System.out.println("result: " + result);
+        }
     }
-        public String test3(String name) {
-            return communicateOperateService.findMediateScheme(1l,1).toString();
-        }
-//    public String doSayHello(String name) {
-//        return demoService.sayHello(name);
-//    }
-//    public String doSayHello2(String name) {
-//        return demoService2.sayHello(name);
-//    }
+
+    public String doSayHello(String name) {
+        return demoService.sayHello(name);
+    }
+    public String doSayHello2(String name) {
+        return demoService2.sayHello(name);
+    }
 }

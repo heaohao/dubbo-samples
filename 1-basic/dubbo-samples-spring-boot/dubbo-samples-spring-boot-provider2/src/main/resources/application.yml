@@ -6,18 +6,10 @@ dubbo:
     port: -1
   registries:
     registry-query-service:
-      address: zookeeper://127.0.0.1:2181
+      address: zookeeper://zk.dev.xinshiyun.com:12181?timeout=120000
       group: query-service-group
   provider:
     group: query-service-provider-group
 
 
 
-#  registry:
-#    id: zk-registry
-#    address: zookeeper://127.0.0.1:2181
-
-#  config-center:
-#    address: zookeeper://127.0.0.1:2181
-#  metadata-report:
-#    address: zookeeper://127.0.0.1:2181

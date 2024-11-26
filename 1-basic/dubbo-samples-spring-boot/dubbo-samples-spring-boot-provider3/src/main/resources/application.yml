@@ -1,17 +1,15 @@
-u-name: ceshi
 dubbo:
   application:
-    name: query-service
+    name: domain-service
   protocol:
     name: dubbo
     port: -1
   registries:
-    registry-query-service:
-      address: zookeeper://zk.dev.xinshiyun.com:12181?timeout=120000
-      group: query-service-group
+    registry-domain-service:
+      address: zookeeper://127.0.0.1:2181
+      group: domain-service-group
   provider:
-    group: query-service-provider-group
-    tag: ${u-name:localTag}
+    group: domain-service-provider-group
 
 
 

@@ -1,13 +1,12 @@
-package org.apache.dubbo.springboot.demo.consumer;
+package com.xinshiyun.ddr;
 
 import org.apache.dubbo.common.URL;
 import org.apache.dubbo.rpc.cluster.router.state.StateRouter;
 import org.apache.dubbo.rpc.cluster.router.state.StateRouterFactory;
 
-public class StickFirstStateRouterFactory implements StateRouterFactory {
+public class LocalTagStateRouterFactory implements StateRouterFactory {
     @Override
     public <T> StateRouter<T> getRouter(Class<T> interfaceClass, URL url) {
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        return new StickFirstStateRouter<>(url);
+        return new LocalTagStateRouter<>(url);
     }
 }
